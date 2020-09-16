@@ -1,0 +1,19 @@
+auto c = (TCanvas*)_file0->Get("MBCan_1D_Tracker_x_vs_eta")
+TObjLink *lnk = c->GetListOfPrimitives()->FirstLink();
+while (lnk) {
+auto h = dynamic_cast<TH1*>(lnk->GetObject());
+if(h){
+std::cout << h->GetName() << "\t";
+std::cout << h->GetBinContent(h->FindBin(1.4)) << std::endl;
+} else {
+std::cout << lnk->GetObject()->GetName() << std::endl;
+}
+lnk = lnk->Next();
+}
+
+auto c = (TCanvas*)_file0->Get("MBCan_1D_Tracker_x_vs_eta");
+float target = 0.;
+TH1F* h = ((TH1F*)((THStack*)(((TList*)c->GetListOfPrimitives())->FindObject("stack_X0")))->GetStack()->Last());
+h->GetBinContent(h->FindBin(target))
+target = 1.4
+h->GetBinContent(h->FindBin(target))
